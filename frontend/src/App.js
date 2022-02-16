@@ -8,7 +8,7 @@ import Register from './components/Register'
 import Profile from './components/Profile'
 import TodoList from './components/TodoList'
 
-axios.defaults.baseURL = 'http://localhost:3000';
+axios.defaults.baseURL = 'http://0.0.0.0:3000';
 
 
 function App() {
