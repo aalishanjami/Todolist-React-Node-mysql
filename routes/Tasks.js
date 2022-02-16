@@ -9,7 +9,7 @@ tasks.use(cors())
 
 process.env.SECRET_KEY = 'secret'
 
-tasks.get('backend/api/tasks', function(req, res, next) {
+tasks.get('/backend/api/tasks', function(req, res, next) {
   if(req.headers['authorization']){
     var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
     Task.findAll({
@@ -29,7 +29,7 @@ tasks.get('backend/api/tasks', function(req, res, next) {
   }
 })
 
-tasks.get('backend/api/task/:id', function(req, res, next) {
+tasks.get('/backend/api/task/:id', function(req, res, next) {
   if(req.headers['authorization']){
     Task.findOne({
       where: {
@@ -52,7 +52,7 @@ tasks.get('backend/api/task/:id', function(req, res, next) {
   }
 })
 
-tasks.post('backend/api/task', function(req, res, next) {
+tasks.post('/backend/api/task', function(req, res, next) {
   if(req.headers['authorization']){
     if (!req.body.name && !req.body.status) {
       res.status(400)
@@ -79,7 +79,7 @@ tasks.post('backend/api/task', function(req, res, next) {
   }
 })
 
-tasks.delete('backend/api/task/:id', function(req, res, next) {
+tasks.delete('/backend/api/task/:id', function(req, res, next) {
   if(req.headers['authorization']){
 
     var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
@@ -116,7 +116,7 @@ tasks.delete('backend/api/task/:id', function(req, res, next) {
   }
 })
 
-tasks.put('backend/api/task/:id', function(req, res, next) {
+tasks.put('/backend/api/task/:id', function(req, res, next) {
   if(req.headers['authorization']){
     if (!req.body.name && !req.body.status) {
       res.status(400)

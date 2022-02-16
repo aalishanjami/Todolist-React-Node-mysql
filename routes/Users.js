@@ -9,7 +9,7 @@ users.use(cors());
 
 process.env.SECRET_KEY = "secret";
 
-users.post("backend/users/register", (req, res) => {
+users.post("/backend/users/register", (req, res) => {
   const today = new Date();
   const userData = {
     name: req.body.name,
@@ -43,11 +43,12 @@ users.post("backend/users/register", (req, res) => {
       }
     })
     .catch((err) => {
+      console.log(err)
       res.send("error: " + err);
     });
 });
 
-users.post("backend/users/login", (req, res) => {
+users.post("/backend/users/login", (req, res) => {
   User.findOne({
     where: {
       email: req.body.email,
@@ -72,7 +73,7 @@ users.post("backend/users/login", (req, res) => {
     });
 });
 
-users.get("backend/users/profile", (req, res) => {
+users.get("/backend/users/profile", (req, res) => {
   var decoded = jwt.verify(
     req.headers["authorization"],
     process.env.SECRET_KEY
@@ -98,7 +99,7 @@ users.get("/backend/users/getdata", (req, res) => {
   res.send("ok");
 });
 
-users.put("backend/users/password", function (req, res, next) {
+users.put("/backend/users/password", function (req, res, next) {
   if (req.headers["authorization"]) {
     if (
       !req.body.email &&
