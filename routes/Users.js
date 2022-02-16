@@ -9,7 +9,7 @@ users.use(cors());
 
 process.env.SECRET_KEY = "secret";
 
-users.post("/register", (req, res) => {
+users.post("backend/users/register", (req, res) => {
   const today = new Date();
   const userData = {
     name: req.body.name,
@@ -47,7 +47,7 @@ users.post("/register", (req, res) => {
     });
 });
 
-users.post("/login", (req, res) => {
+users.post("backend/users/login", (req, res) => {
   User.findOne({
     where: {
       email: req.body.email,
@@ -72,7 +72,7 @@ users.post("/login", (req, res) => {
     });
 });
 
-users.get("/profile", (req, res) => {
+users.get("backend/users/profile", (req, res) => {
   var decoded = jwt.verify(
     req.headers["authorization"],
     process.env.SECRET_KEY
@@ -94,11 +94,11 @@ users.get("/profile", (req, res) => {
     });
 });
 
-users.get("/getdata", (req, res) => {
+users.get("/backend/users/getdata", (req, res) => {
   res.send("ok");
 });
 
-users.put("/password", function (req, res, next) {
+users.put("backend/users/password", function (req, res, next) {
   if (req.headers["authorization"]) {
     if (
       !req.body.email &&

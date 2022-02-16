@@ -15,8 +15,8 @@ app.use(
 var Users = require('./routes/Users')
 var Tasks = require('./routes/Tasks')
 
-app.use('backend/users', Users)
-app.use('backend/api', Tasks)
+app.use(Users)
+app.use(Tasks)
 
 app.listen(port, function() {
   console.log('Server is running on port: ' + port)
