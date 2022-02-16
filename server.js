@@ -18,6 +18,6 @@ var Tasks = require('./routes/Tasks')
 app.use('/users', Users)
 app.use('/api', Tasks)
 
-app.listen(port, '0.0.0.0' ,function() {
+app.listen(port, function() {
   console.log('Server is running on port: ' + port)
 })
