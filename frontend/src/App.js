@@ -1,12 +1,14 @@
 import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
-
+import axios from 'axios'
 import Navbar from './components/Navbar'
 import Landing from './components/Landing'
 import Login from './components/Login'
 import Register from './components/Register'
 import Profile from './components/Profile'
 import TodoList from './components/TodoList'
+
+axios.defaults.baseURL = 'http://localhost:3000';
 
 
 function App() {

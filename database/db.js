@@ -1,8 +1,9 @@
 const Sequelize = require('sequelize')
 const db = {}
-const sequelize = new Sequelize('web', 'root', '', {
-  host: 'localhost',
+const sequelize = new Sequelize('surface_mariadb_rds', 'admin', 'Surface-netflix-321', {
+  host: 'surface-mariadb-rds.cl60bcyfcprk.us-east-1.rds.amazonaws.com',
   dialect: 'mysql',
+  port: 3306,
   operatorsAliases: false,
 
   pool: {
